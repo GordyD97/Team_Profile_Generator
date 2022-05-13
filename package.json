@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/GordyD97/Team_Profile_Generator/issues"
   },
-  "homepage": "https://github.com/GordyD97/Team_Profile_Generator#readme"
+  "homepage": "https://github.com/GordyD97/Team_Profile_Generator#readme",
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
 }
