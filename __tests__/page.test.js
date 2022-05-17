@@ -1,21 +1,31 @@
-const titles = require('../lib/page');
+const Users = require('../lib/page');
 
-describe('Titles', () => {
-    describe('getTitles', () =>{
-        it ('should set titles a property when called', () => {
+describe('Users', () => {
+    describe('getUsers', () =>{
+        it ('should set Users a property when called', () => {
             const num = whatever;
-            const t = new titles(num);
+            const t = new Users(num);
             expect(t.num).toEqual(num);
         });
-        it('should set titles a property when called', () => {
+        it('should set Users a property when called', () => {
             const num = whatever;
-            const expected = "titles titles"
+            const expected = "Users Users"
             expect(answer).toEqual(expected);
         });
-        it('should set titles a property when called', () => {
+        it('should set Users a property when called', () => {
             const num = whatever;
-            const t = new titles(num);
+            const t = new Users(num);
             expect(t.num).toEqual(num);
         });
     })
 });
+
+
+class Users {
+    constructor(name, id, email, getName(), getId(), getEmail(), getRole())
+    this.name = name,
+    this.id = id,
+    this.email = email,
+    this.get
+
+}
