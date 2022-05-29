@@ -1,6 +1,6 @@
 const employee = require('../lib/employe.js');
 
-describe('employee', () => {
+describe('employe', () => {
     describe('getUsers', () =>{
         it ('should set Users a property when called', () => {
             const num = whatever;

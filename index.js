@@ -7,3 +7,8 @@ prompt
 
 
 console.log(writer('bikes are cool', "data"));
+
+addEmploye = (Employe) => {
+    this.Employe.push(Employe);
+    return
+}
