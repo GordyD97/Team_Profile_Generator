@@ -1,6 +1,8 @@
 // import inqurier and file
 const inquirer = require("inquirer");
 const fs = require("fs");
+const path = require("path");
+
 
 // import classes
 const Employee = require('./lib/Employee');

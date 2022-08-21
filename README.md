@@ -4,7 +4,9 @@
 
 # Instilation
 
-# Screen shots
+# Screen shot
+
+# Live Demo
 
 # Usage
 

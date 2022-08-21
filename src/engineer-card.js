@@ -7,13 +7,13 @@ const engineerCard = (profile) => `
     <div class="card-body bg-light">
       <ul class="list-group">
         <li class="list-group-item">
-          <strong>ID:</strong> ${profile.getID()}
+          <strong>ID:</strong> ${profile.getId()}
         </li>
         <li class="list-group-item">         
           <strong>Email:</strong> <a href="mailto:${profile.getEmail()}">${profile.getEmail()}</a>
         </li>
         <li class="list-group-item">          
-          <strong>GitHub:</strong> <a href="http://www.github.com/${profile.getGithub()}" target="_blank">${profile.getGithub()}</a>
+          <strong>GitHub:</strong> <a href="http://www.github.com/${profile.getGitHub()}" target="_blank">${profile.getGitHub()}</a>
         </li>
       </ul>
     </div>
