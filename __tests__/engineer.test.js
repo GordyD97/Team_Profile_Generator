@@ -1,21 +1,57 @@
 const engineer = require('../lib/engineer.js');
 
 describe('engineer', () => {
-    describe('getUsers', () => {
-        it('should set Users a property when called', () => {
-            const num = whatever;
-            const t = new Users(num);
-            expect(t.num).toEqual(num);
+    describe("Engineer object instantiation", () => {
+        it("creates an object with name, id, email, and github properties", () => {
+            const engineer = new Engineer("Jane Doe", 1, "janedoe@gmail.com", "janedoegit");
+
+            expect(engineer).toBeInstanceOf(Engineer);
+            expect(engineer.name).toEqual("Jane Doe");
+            expect(engineer.id).toEqual(1);
+            expect(engineer.email).toEqual("janedoe@gmail.com");
+            expect(engineer.github).toEqual("janedoegit");
         });
-        it('should set Users a property when called', () => {
-            const num = whatever;
-            const expected = "Users Users"
-            expect(answer).toEqual(expected);
+    });
+
+    describe("getName", () => {
+        it("return the object's name property", () => {
+            const engineer = new Engineer("Jane Doe", 1, "janedoe@gmail.com", "janedoegit");
+
+            expect(engineer.getName()).toEqual("Jane Doe");
         });
-        it('should set Users a property when called', () => {
-            const num = whatever;
-            const t = new Users(num);
-            expect(t.num).toEqual(num);
+    });
+
+    describe("getId", () => {
+        it("return the object's id property", () => {
+            const engineer = new Engineer("Jane Doe", 1, "janedoe@gmail.com", "janedoegit");
+
+            expect(engineer.getID()).toEqual(1);
         });
-    })
+    });
+
+    describe("getEmail", () => {
+        it("return the object's email property", () => {
+            const engineer = new Engineer("Jane Doe", 1, "janedoe@gmail.com", "janedoegit");
+
+            expect(engineer.getEmail()).toEqual("janedoe@gmail.com");
+        });
+    });
+
+
+    describe("getGithub", () => {
+        it("return the object's github property", () => {
+            const engineer = new Engineer("Jane Doe", 1, "janedoe@gmail.com", "janedoegit");
+
+            expect(engineer.getGithub()).toEqual("janedoegit");
+        });
+    });
+
+
+    describe("getRole", () => {
+        it("return the string 'Engineer", () => {
+            const engineer = new Engineer("Jane Doe", 1, "janedoe@gmail.com", "janedoegit");
+
+            expect(engineer.getRole()).toEqual("Engineer");
+        });
+    });
 });
