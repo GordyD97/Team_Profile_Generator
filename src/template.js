@@ -1,23 +1,23 @@
-const template = require("../lib/structure");
+// const template = require("../lib/structure");
 
-var addManagerCard = function(Manager) {
-  return(
+
+const generateManager = function (manager) {
+  return (
     `
     <div class="card col-md-4 p-0">
     <div class="card-header bg-primary text-white">
-      <h3> ${profile.getName()} </h3>
-      <h4> ${profile.getRole()} </h4>
+      <h3> ${manager.name} </h3>
     </div>
     <div class="card-body">
       <ul class="list-group">
         <li class="list-group-item">
-          <strong>ID:</strong> ${profile.getId()}
+          <strong>ID:</strong> ${manager.Id}
         </li>
         <li class="list-group-item">          
-          <strong>Email:</strong> <a href="mailto: ${profile.getEmail()}">${profile.getEmail()} </a>
+          <strong>Email:</strong> <a href="mailto: ${manager.email}">${manager.email()} </a>
         </li>
         <li class="list-group-item">
-          <strong>Office Phone:</strong> ${profile.getOffice()}
+          <strong>Office Phone:</strong> ${manager.officeNumber}
         </li>
     </ul>
     </div>
@@ -26,7 +26,7 @@ var addManagerCard = function(Manager) {
   );
 }
 
- generateHTML = (data) => {
+generateHtml = (data) => {
   pageArray = [];
 
   for (let i = 0; i < data.length; i++) {
@@ -35,18 +35,18 @@ var addManagerCard = function(Manager) {
     console.log(role)
 
     if (role === 'Manager') {
-      const managerCard = addManagerCard(employee);
+      const managerCard = generateManager(employee);
 
       pageArray.push(managerCard);
     }
 
     if (role === 'Engineer') {
-      const engineerCard = addEngineerCard(employee)
+      const engineerCard = generateEngineer(employee);
 
       pageArray.push(engineerCard);
     }
     if (role === 'Intern') {
-      const internCard = addInternCard(employee);
+      const internCard = generateIntern(employee);
 
       pageArray.push(internCard)
     }
@@ -54,18 +54,18 @@ var addManagerCard = function(Manager) {
   }
   const profileCards = pageArray.join('')
 
-  const generateTeam = generateTeamPage(profileCards);
-  return generateTeam;
+  const generateEmployees = generateEmployeePage(profileCards);
+  return generateEmployees;
 };
 
 
 
-let renderTeam = renderTeam(profileCards);
-return renderTeam;
+// const generateEmployees = generateEmployeePage(profileCards);
+// return generateEmployees;
 
-let renderTeam = function (profileCards) {
-return ( 
-  `
+const generateEmployeePage = function (profileCards) {
+  return (
+    `
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -85,15 +85,16 @@ return (
     </header>
     <!-- Main container -->
     <main>
+    <!-- Cards will generate here -->
       <div class="container">
-        <div class="row">
-          ${profileCards} 
+        <div class="row justify-content-center" id="profilecards">    
+        ${profileCards} 
         </div>
       </div>
     </main>
   </body>
   </html>
-` 
+`
   );
 };
 

@@ -2,6 +2,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const path = require("path");
+// const generateHtml = require('./src/template');
 
 
 // import classes
@@ -115,11 +116,32 @@ const addIntern = [
     },
 ];
 
+ const select = (employeeData) => {
+     let { name, id, email, role, github, school, confirmAddEmployee } = employeeData;
+     let employee = '';
+
+     if (role === 'Engineer') {
+         employee = new Engineer(name, id, email, github);
+
+         // console.log(employee);
+     }
+     else if (role === 'Intern') {
+         employee = new Intern(name, id, email, school);
+         // console.log(employee);
+     }
+
+     teamArray.push(employee);
+     if (confirmAddEmployee) {
+         return addEmployee(teamArray);
+     } else {
+         return teamArray;
+     }
+ };
 // initialize app
-ask(addManager);
+
 
 // run trough the questions if a memeber needs to be added
-function ask(questionArr) {
+const ask = (questionArr) => {
     inquirer
         .prompt(questionArr)
         .then((member) => {
@@ -136,7 +158,7 @@ function ask(questionArr) {
         .catch((err) => console.log(err));
 }
 
-
+ask(addManager);
 function createProfiles(team) {
 
     const profiles = team.map((member) => {
@@ -164,7 +186,7 @@ function createProfiles(team) {
     generateHtml(profiles);
 }
 
-function generateHtml(profiles) {
+const generateHtml = (profiles) => {
     let profileCards = '';
     profiles.forEach((profile) => {
         if (profile instanceof Manager) {
@@ -179,16 +201,16 @@ function generateHtml(profiles) {
         }
     })
 
-
     const newHtml = wrapProfileCards(profileCards);
 
     writeHtml(newHtml);
 };
 
 // writes html to /dist/team-profile.html
-function writeHtml(newHtml) {
-    fs.writeFile('./dist/index.html', newHtml, (err) => {
-        if (err) /*throw err*/ console.log("madeithere");
+const writeHtml = data => {
+    console.log(data);
+    fs.writeFile('./dist/index.html', data, (err) => {
+        if (err) throw err;
         console.log('HTML document successfully created in the /dist folder.');
     });
 };
