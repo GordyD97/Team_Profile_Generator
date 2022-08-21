@@ -2,9 +2,10 @@ const Employee = require('../lib/Employee.js');
 const Manager = require('../lib/Manager.js');
 
 describe('Manager', () => {
-    describe("M object instantiation", () => {
+
+    describe("Manager object instantiation", () => {
         it("creates an object with name, id, email, and officeNumber properties", () => {
-            const M = new Manager("Jane Doe", 1, "janedoe@gmail.com", 50);
+            const manager = new Manager("Jane Doe", 1, "janedoe@gmail.com", 50);
 
             expect(manager).toBeInstanceOf(Manager);
             expect(manager.name).toEqual("Jane Doe");

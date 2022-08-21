@@ -9,13 +9,14 @@ const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
 // import HTML templates
-const addManagerCard = require('./src/card-manager');
-const addEngineerCard = require('./src/card-engineer');
-const addInternCard = require('./src/card-intern');
-const wrapProfileCards = require('./src/html-wrapper');
+const addManagerCard = require('./src/manager-card');
+const addEngineerCard = require('./src/engineer-card');
+const addInternCard = require('./src/intern-card');
+const wrapProfileCards = require('./lib/structure');
 
 // declare empty Array
 const team = [];
+const canAddManager = true;
 
 // add manager 
 const addManager = [
@@ -184,8 +185,9 @@ function generateHtml(profiles) {
 
 // writes html to /dist/team-profile.html
 function writeHtml(newHtml) {
-    fs.writeFile('./dist/team-profiles.html', newHtml, (err) => {
-        if (err) throw err;
+    fs.writeFile('./dist/index.html', newHtml, (err) => {
+        if (err) /*throw err*/ console.log("madeithere");
         console.log('HTML document successfully created in the /dist folder.');
     });
 };
+

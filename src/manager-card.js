@@ -7,7 +7,7 @@ const managerCard = (profile) => `
     <div class="card-body">
       <ul class="list-group">
         <li class="list-group-item">
-          <strong>ID:</strong> ${profile.getID()}
+          <strong>ID:</strong> ${profile.getId()}
         </li>
         <li class="list-group-item">          
           <strong>Email:</strong> <a href="mailto: ${profile.getEmail()}">${profile.getEmail()} </a>
