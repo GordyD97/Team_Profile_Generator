@@ -1,7 +1,7 @@
 // import inqurier and file
 const inquirer = require("inquirer");
 const fs = require("fs");
-const path = require("path");
+// const path = require("path");
 // const generateHtml = require('./src/template');
 
 
@@ -132,7 +132,7 @@ const addIntern = [
 
      teamArray.push(employee);
      if (confirmAddEmployee) {
-         return addEmployee(teamArray);
+         return Employee(teamArray);
      } else {
          return teamArray;
      }
@@ -152,16 +152,17 @@ const ask = (questionArr) => {
             } else if (member.upNext === 'Add Intern') {
                 ask(addIntern);
             } else {
-                createProfiles(team);
+                createProfiles();
             }
         })
         .catch((err) => console.log(err));
 }
 
 ask(addManager);
+
 function createProfiles(team) {
 
-    const profiles = team.map((member) => {
+    const profiles = ((member) => {
         const { name, id, email } = member;
 
         // asks for phone nnumber if its a manager role
@@ -186,7 +187,7 @@ function createProfiles(team) {
     generateHtml(profiles);
 }
 
-const generateHtml = (profiles) => {
+function generateHtml(profiles) {
     let profileCards = '';
     profiles.forEach((profile) => {
         if (profile instanceof Manager) {
