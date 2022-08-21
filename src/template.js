@@ -5,4 +5,4 @@ return(
     <main>${data}</main>
     `
     );
-}
+};

@@ -21,11 +21,11 @@
 // });
 
 
-class Users {
-    constructor(name, id, email, getName(), getId(), getEmail(), getRole())
-    this.name = name,
-    this.id = id,
-    this.email = email,
-    this.get
+// class Users {
+//     constructor(name, id, email, getName(), getId(), getEmail(), getRole())
+//     this.name = name,
+//     this.id = id,
+//     this.email = email,
+//     this.get
 
-}
+// }

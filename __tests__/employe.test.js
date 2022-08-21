@@ -1,6 +1,6 @@
-const employee = require('../lib/Employee.js');
+const Employee = require('../lib/Employee');
 
-describe('employe', () => {
+describe('Employee', () => {
     
     describe("Employee object instantiation", () => {
         it("creates an object with name, id, and email properties", () => {
