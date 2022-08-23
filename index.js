@@ -1,6 +1,7 @@
 // import inqurier and file
 const inquirer = require("inquirer");
 const fs = require("fs");
+// import profile = (profileCards);
 // const path = require("path");
 // const generateHtml = require('./src/template');
 
@@ -18,8 +19,9 @@ const addInternCard = require('./src/intern-card');
 const wrapProfileCards = require('./lib/structure');
 
 // declare empty Array
-const team = [];
+const teamArray = [];
 const canAddManager = true;
+const data = teamArray;
 
 // add manager 
 const addManager = [
@@ -140,19 +142,19 @@ const addIntern = [
 // initialize app
 
 
-// run trough the questions if a memeber needs to be added
+// run trough the questions if a profile needs to be added
 const ask = (questionArr) => {
     inquirer
         .prompt(questionArr)
-        .then((member) => {
-            team.push(member);
+        .then((profile) => {
+            teamArray.push(profile);
 
-            if (member.upNext === 'Add Engineer') {
+            if (profile.upNext === 'Add Engineer') {
                 ask(addEngineer);
-            } else if (member.upNext === 'Add Intern') {
+            } else if (profile.upNext === 'Add Intern') {
                 ask(addIntern);
             } else {
-                createProfiles();
+                createProfiles(profile);
             }
         })
         .catch((err) => console.log(err));
@@ -160,36 +162,38 @@ const ask = (questionArr) => {
 
 ask(addManager);
 
-function createProfiles(team) {
+function createProfiles(profiles) {
 
-    const profiles = ((member) => {
-        const { name, id, email } = member;
+    var profiles = ((profile) => {
+        const { name, id, email } = profile;
 
         // asks for phone nnumber if its a manager role
-        if (member.hasOwnProperty('officeNumber')) {
-            const { officeNumber } = member;
+        if (profile.hasOwnProperty('officeNumber')) {
+            const { officeNumber } = profile;
             return new Manager(name, id, email, officeNumber);
         }
 
         // ask for github if engineer
-        if (member.hasOwnProperty('github')) {
-            const { github } = member;
+        if (profile.hasOwnProperty('github')) {
+            const { github } = profile;
             return new Engineer(name, id, email, github);
         }
 
         // ask for school if intern
-        if (member.hasOwnProperty('school')) {
-            const { school } = member;
+        if (profile.hasOwnProperty('school')) {
+            const { school } = profile;
             return new Intern(name, id, email, school);
         }
     });
-
+    console.log(profiles);
     generateHtml(profiles);
 }
 
+
 function generateHtml(profiles) {
-    let profileCards = '';
-    profiles.forEach((profile) => {
+    let profileCards = data;
+    console.log(profiles);
+    teamArray.forEach((profile) => {
         if (profile instanceof Manager) {
             const card = addManagerCard(profile);
             profileCards += card;

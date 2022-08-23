@@ -1,5 +1,7 @@
 // const template = require("../lib/structure");
 
+const wrapProfileCards = require("../lib/structure");
+
 
 const generateManager = function (manager) {
   return (
@@ -99,3 +101,4 @@ const generateEmployeePage = function (profileCards) {
 };
 
 module.exports = generateHtml;
+module.exports = profileCards;
