@@ -16,7 +16,7 @@ const generateManager = function (manager) {
           <strong>ID:</strong> ${manager.Id}
         </li>
         <li class="list-group-item">          
-          <strong>Email:</strong> <a href="mailto: ${manager.email}">${manager.email()} </a>
+          <strong>Email:</strong> <a href="mailto: ${manager.email}">${manager.email} </a>
         </li>
         <li class="list-group-item">
           <strong>Office Phone:</strong> ${manager.officeNumber}
@@ -28,6 +28,59 @@ const generateManager = function (manager) {
   );
 }
 
+const generateEngineer = function (engineer) {
+  return (
+    `
+  <div class="card col-md-4 p-0">
+    <div class="card-header bg-secondary text-white">
+      <h3> ${engineer.name} </h3>
+      <h4> ${engineer.role} </h4>
+    </div>
+    <div class="card-body bg-light">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>ID:</strong> ${engineer.id}
+        </li>
+        <li class="list-group-item">         
+          <strong>Email:</strong> <a href="mailto:${engineer.email}">${engineer.email}</a>
+        </li>
+        <li class="list-group-item">          
+          <strong>GitHub:</strong> <a href="http://www.github.com/${engineer.github}" target="_blank">${engineer.github}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+`
+  );
+}
+
+const generateIntern = function (intern) {
+  return (
+    `
+  <div class="card col-md-4 p-0">
+    <div class="card-header bg-info text-white">
+      <h3> ${intern.name} </h3>
+      <h4> ${intern.role} </h4>
+    </div>
+    <div class="card-body bg-light">
+      <ul class="list-group">
+        <li class="list-group-item">          
+          <strong>ID:</strong> ${intern.id}
+        </li>
+        <li class="list-group-item">          
+          <strong>Email:</strong> <a href="mailto:${intern.email}">${intern.email}</a>
+        </li>
+        <li class="list-group-item">          
+          <strong>School:</strong> ${intern.School}
+        </li>
+      </ul>
+    </div>
+  </div>
+`
+  );
+}
+
+
 generateHtml = (data) => {
   pageArray = [];
 
@@ -37,18 +90,18 @@ generateHtml = (data) => {
     console.log(role)
 
     if (role === 'Manager') {
-      const managerCard = generateManager(employee);
+      const managerCard = generateManager(manager);
 
       pageArray.push(managerCard);
     }
 
     if (role === 'Engineer') {
-      const engineerCard = generateEngineer(employee);
+      const engineerCard = generateEngineer(engineer);
 
       pageArray.push(engineerCard);
     }
     if (role === 'Intern') {
-      const internCard = generateIntern(employee);
+      const internCard = generateIntern(intern);
 
       pageArray.push(internCard)
     }
