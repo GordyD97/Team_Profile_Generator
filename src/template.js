@@ -3,6 +3,9 @@
 const wrapProfileCards = require("../lib/structure");
 
 
+
+const generateEmployeePage = function (profileCards) {
+
 const generateManager = function (manager) {
   return (
     `
@@ -118,7 +121,7 @@ generateHtml = (data) => {
 // const generateEmployees = generateEmployeePage(profileCards);
 // return generateEmployees;
 
-const generateEmployeePage = function (profileCards) {
+
   return (
     `
   <!DOCTYPE html>
@@ -155,3 +158,4 @@ const generateEmployeePage = function (profileCards) {
 
 module.exports = generateHtml;
 module.exports = profileCards;
+module.exports = wrapProfileCards;

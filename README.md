@@ -1,17 +1,23 @@
 # Team_Profile_Generator
 
 # Description
-
+An application that will construct employee profile cards using the command line to fill the information out. The answers that are stored will then be rendered into the dist HTML file and disaplyed and wrapped in a bootstrap format. 
 # Instilation
-
-# Screen shot
+```
+for this application to run you will use **node server.js** 
+```
 
 # Live Demo
+![](./assets/images/teamprofilegen.gif)
+
+# Screenshot
+![](./assets/images/teamprofilegensnap.PNG)
 
 # Usage
+This appication will be used for an individual in the admin position of a company. The individual with this application will be able to organize their workforce with this simple app. With the features such as showing which school office number and github account this application strives to be the best. 
 
 # Liscence
-
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # Acceptance criteria
 ``
 GIVEN a command-line application that accepts user input
