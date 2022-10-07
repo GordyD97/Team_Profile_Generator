@@ -1,126 +1,103 @@
-// const template = require("../lib/structure");
-
-const wrapProfileCards = require("../lib/structure");
 
 
+function generateTeam(teamArray) {
 
-const generateEmployeePage = function (profileCards) {
 
-const generateManager = function (manager) {
-  return (
-    `
-    <div class="card col-md-4 p-0">
-    <div class="card-header bg-primary text-white">
-      <h3> ${manager.name} </h3>
-    </div>
-    <div class="card-body">
-      <ul class="list-group">
-        <li class="list-group-item">
-          <strong>ID:</strong> ${manager.Id}
-        </li>
-        <li class="list-group-item">          
-          <strong>Email:</strong> <a href="mailto: ${manager.email}">${manager.email} </a>
-        </li>
-        <li class="list-group-item">
-          <strong>Office Phone:</strong> ${manager.officeNumber}
-        </li>
-    </ul>
-    </div>
-  </div>
-    `
-  );
-}
 
-const generateEngineer = function (engineer) {
-  return (
-    `
-  <div class="card col-md-4 p-0">
-    <div class="card-header bg-secondary text-white">
-      <h3> ${engineer.name} </h3>
-      <h4> ${engineer.role} </h4>
-    </div>
-    <div class="card-body bg-light">
-      <ul class="list-group">
-        <li class="list-group-item">
-          <strong>ID:</strong> ${engineer.id}
-        </li>
-        <li class="list-group-item">         
-          <strong>Email:</strong> <a href="mailto:${engineer.email}">${engineer.email}</a>
-        </li>
-        <li class="list-group-item">          
-          <strong>GitHub:</strong> <a href="http://www.github.com/${engineer.github}" target="_blank">${engineer.github}</a>
-        </li>
+  const generateManager = function (manager) {
+    return (
+      `
+      <div class="card col-md-4 p-0">
+      <div class="card-header bg-primary text-white">
+        <h3> ${manager.getName()} </h3>
+      </div>
+      <div class="card-body">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong>ID:</strong> ${manager.getId()}
+          </li>
+          <li class="list-group-item">          
+            <strong>Email:</strong> <a href="mailto: ${manager.getEmail()}">${manager.getEmail()} </a>
+          </li>
+          <li class="list-group-item">
+            <strong>Office Phone:</strong> ${manager.getOffice()}
+          </li>
       </ul>
+      </div>
     </div>
-  </div>
-`
-  );
-}
-
-const generateIntern = function (intern) {
-  return (
-    `
-  <div class="card col-md-4 p-0">
-    <div class="card-header bg-info text-white">
-      <h3> ${intern.name} </h3>
-      <h4> ${intern.role} </h4>
-    </div>
-    <div class="card-body bg-light">
-      <ul class="list-group">
-        <li class="list-group-item">          
-          <strong>ID:</strong> ${intern.id}
-        </li>
-        <li class="list-group-item">          
-          <strong>Email:</strong> <a href="mailto:${intern.email}">${intern.email}</a>
-        </li>
-        <li class="list-group-item">          
-          <strong>School:</strong> ${intern.School}
-        </li>
-      </ul>
-    </div>
-  </div>
-`
-  );
-}
-
-
-generateHtml = (data) => {
-  pageArray = [];
-
-  for (let i = 0; i < data.length; i++) {
-    const employee = data[i];
-    const role = employee.getRole();
-    console.log(role)
-
-    if (role === 'Manager') {
-      const managerCard = generateManager(manager);
-
-      pageArray.push(managerCard);
-    }
-
-    if (role === 'Engineer') {
-      const engineerCard = generateEngineer(engineer);
-
-      pageArray.push(engineerCard);
-    }
-    if (role === 'Intern') {
-      const internCard = generateIntern(intern);
-
-      pageArray.push(internCard)
-    }
-
+      `
+    );
   }
-  const profileCards = pageArray.join('')
 
-  const generateEmployees = generateEmployeePage(profileCards);
-  return generateEmployees;
-};
+  const generateEngineer = function (engineer) {
+    return (
+      `
+    <div class="card col-md-4 p-0">
+      <div class="card-header bg-secondary text-white">
+        <h3> ${engineer.name} </h3>
+        <h4> ${engineer.role} </h4>
+      </div>
+      <div class="card-body bg-light">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong>ID:</strong> ${engineer.id}
+          </li>
+          <li class="list-group-item">         
+            <strong>Email:</strong> <a href="mailto:${engineer.email}">${engineer.email}</a>
+          </li>
+          <li class="list-group-item">          
+            <strong>GitHub:</strong> <a href="http://www.github.com/${engineer.github}" target="_blank">${engineer.github}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  `
+    );
+  }
+
+  const generateIntern = function (intern) {
+    return (
+      `
+    <div class="card col-md-4 p-0">
+      <div class="card-header bg-info text-white">
+        <h3> ${intern.getName()} </h3>
+        <h4> ${intern.getRole()} </h4>
+      </div>
+      <div class="card-body bg-light">
+        <ul class="list-group">
+          <li class="list-group-item">          
+            <strong>ID:</strong> ${intern.getId()}
+          </li>
+          <li class="list-group-item">          
+            <strong>Email:</strong> <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a>
+          </li>
+          <li class="list-group-item">          
+            <strong>School:</strong> ${intern.getSchool()}
+          </li>
+        </ul>
+      </div>
+    </div>
+  `
+    );
+  }
+
+  console.log(teamArray);
+
+  const pageArray = [];
+  pageArray.push(teamArray.filter(employee => employee.getRole() === 'Manager').map(manager => generateManager(manager)))
+
+  pageArray.push(teamArray.filter(employee => employee.getRole() === 'Engineer').map(engineer => generateEngineer(engineer)))
+  pageArray.push(teamArray.filter(employee => employee.getRole() === 'Intern').map(intern => generateIntern(intern)))
+
+  return pageArray.join('');
 
 
+}
 
 // const generateEmployees = generateEmployeePage(profileCards);
 // return generateEmployees;
 
+module.exports = (team) => {
 
   return (
     `
@@ -146,7 +123,7 @@ generateHtml = (data) => {
     <!-- Cards will generate here -->
       <div class="container">
         <div class="row justify-content-center" id="profilecards">    
-        ${profileCards} 
+        ${generateTeam(team)} 
         </div>
       </div>
     </main>
@@ -154,8 +131,9 @@ generateHtml = (data) => {
   </html>
 `
   );
-};
+}
 
-module.exports = generateHtml;
-module.exports = profileCards;
-module.exports = wrapProfileCards;
+
+
+
+
