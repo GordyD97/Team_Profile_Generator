@@ -8,10 +8,10 @@ for this application to run you will use **node server.js**
 ```
 
 # Live Demo
-![](./assets/images/teamprofilegen.gif)
+![](./assets/images/02020202020.gif)
 
 # Screenshot
-![](./assets/images/teamprofilegensnap.PNG)
+![](./assets/images/010101010.PNG)
 
 # Usage
 This appication will be used for an individual in the admin position of a company. The individual with this application will be able to organize their workforce with this simple app. With the features such as showing which school office number and github account this application strives to be the best. 
